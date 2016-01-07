@@ -8,7 +8,7 @@ Team Members
 * Cody Malick
 * Jacob Broderick
 * Kenneth Steinfeldt
-* Christian Mellow
+* Christian Mello
 
 Jedi Temple
 -----------
