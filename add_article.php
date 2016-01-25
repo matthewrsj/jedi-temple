@@ -1,30 +1,34 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Add Articles</title>
-  </head>
-  <body>
-    <h3>Add Article</h3>
-    <form class="" action="index.html" method="post">
-      <label for="title">Title</label>
-      <input type="textbox" id="title" name="title" value="" placeholder="Title"><br>
-      <label for="link">Link to Article</label>
-      <input type="textbox" id="link" name="link" value="" placeholder="url"><br>
-      <label for="author">Author</label>
-      <select class="author" name="author">
-        <option value="Cody">Cody</option>
-        <option value="Other...">Other...</option>
-      </select><br>
-      <label for="category">Category</label>
-      <select class="category" name="">
-        <option value="network">Network Security</option>
-        <option value="physical">Physical Security</option>
-        <option value="cryptography">Cryptography</option>
-        <option value="misc">Misc</option>
-      </select><br>
-      <button type="submit" name="submit">Add Article</button>
-    </form>
-  </body>
-</html>
-</html>
+<?php include('header.php') ?>
+    <div class="container">
+      <div class="row">
+        <h3>Add Article</h3>
+      </div>
+      <div class="row">
+        <div class="jumbotron">
+          <form class="" action="index.html" method="post">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input class="form-control" type="textbox" id="title" name="title" value="" placeholder="Title">
+            </div>
+            <div class="form-group">
+              <label for="link">Link to Article</label>
+              <input class="form-control" type="textbox" id="link" name="link" value="" placeholder="url">
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select class="form-control" name="">
+                <option value="network">Network Security</option>
+                <option value="physical">Physical Security</option>
+                <option value="cryptography">Cryptography</option>
+                <option value="misc">Misc</option>
+              </select>
+            </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-default" name="submit">Add Article</button>
+              </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+<?php include('footer.php') ?>
