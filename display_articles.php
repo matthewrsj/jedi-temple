@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Display Articles</title>
-  </head>
-  <body>
+<?php include('header.php') ?>
     <h3>Current Articles</h3>
     <form class="" action="index.html" method="post">
       <a href="http://www.cisco.com/cisco/web/solutions/small_business/resource_center/articles/secure_my_business/what_is_network_security/index.html">What Is Network Security?</a><br>
@@ -14,5 +8,4 @@
       <label for="force">Midi-Chlorian Count: 9001</label></br>
       <button type="upvote" name="upvote">Upvote</button>
     </form>
-  </body>
-</html>
+<?php include('footer.php') ?>
