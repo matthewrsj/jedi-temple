@@ -35,6 +35,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Articles<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="display_articles.php">Latest Articles</a></li>
+            <li><a href="display_articles.php">All Articles</a></li>
             <!--<li><a href="add_article.php">Submit an Article</a></li> -->
             <!-- <li><a href="#">Something else here</a></li> -->
             <li role="separator" class="divider"></li>
@@ -43,6 +44,8 @@
             <li><a href="#">One more separated link</a></li> -->
           </ul>
         </li>
+        <li class=""><a href="rss_feed.php">RSS Feed<span class="sr-only">(current)</span></a></li>
+        <li><a href="top_contributors.php">Top Contributors</a></li>
       </ul>
       <!-- <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
