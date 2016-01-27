@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-3">
       <div class="jumbotron">
-        Login Here
+       <a href="https://login.oregonstate.edu/cas/login?service=http://http://web.engr.oregonstate.edu/~malickc/"> Login Here</a>
       </div>
     </div>
   </div>
