@@ -95,7 +95,7 @@ function checkAuth($doRedirect) {
       </ul>
       <?php } else { ?>
       <ul class="nav navbar-nav navbar-right">
-        <li>Already Logged In</li>
+        <li><a href="#">Already Logged In</a></li>
       </ul>
       <?php } ?>
     </div><!-- /.navbar-collapse -->
