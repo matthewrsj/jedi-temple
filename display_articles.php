@@ -55,20 +55,24 @@
 
           ?>
 		</form>
-		<?php 
-			$sql = "SELECT * FROM articles";
-			$rs_result = mysql_query($sql); //run the query
-			$total_records = mysql_num_rows($rs_result);  //count number of records
-			$total_pages = floor($total_records / $num_rec_per_page);
+			<nav>
+				<ul class = "pagination">
+			<?php 
+				$sql = "SELECT * FROM articles";
+				$rs_result = mysql_query($sql); //run the query
+				$total_records = mysql_num_rows($rs_result);  //count number of records
+				$total_pages = floor($total_records / $num_rec_per_page);
 
-			echo "<a href='display_articles.php?page=1'>".'|<'."</a> "; // Goto 1st page  
+				echo "<li><a href='display_articles.php?page=1'>".'|<'."</a></li> "; // Goto 1st page  
 
-			for ($i=1; $i<=$total_pages; $i++) { 
-							echo "<a href='display_articles.php?page=".$i."'>".$i."</a> "; 
-			}; 
-			echo "<a href='display_articles.php?page=$total_pages'>".'>|'."</a> "; // Goto last page
-          mysql_close($mysql_handle);
-		?>
+				for ($i=1; $i<=$total_pages; $i++) { 
+								echo "<li><a href='display_articles.php?page=".$i."'>".$i."</a><li> "; 
+				}; 
+				echo "<li><a href='display_articles.php?page=$total_pages'>".'>|'."</a></li> "; // Goto last page
+			  mysql_close($mysql_handle);
+			?>
+				</ul>
+			</nav>
       </div>
     </div>
 
