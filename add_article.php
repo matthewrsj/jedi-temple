@@ -40,9 +40,15 @@
                   ?>
               </select>
             </div>
+            <?php if (checkAuth(false) != "") { ?>
               <div class="form-group">
                 <button type="submit" class="btn btn-default" name="submit">Add Article</button>
               </div>
+            <?php } else { ?>
+              <div class="form-group">
+                <p>You must log in first!</p>
+              </div>
+            <?php } ?>
           </form>
         </div>
 
