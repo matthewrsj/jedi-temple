@@ -89,12 +89,17 @@ function checkAuth($doRedirect) {
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
+      <?php if (checkAuth(false) == "") { ?>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Login</a></li>
+        <li><a href="login_handler.php">Login</a></li>
       </ul>
+      <?php } else { ?>
+      <ul class="nav navbar-nav navbar-right">
+        <li>Already Logged In</li>
+      </ul>
+      <?php } ?>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
   <body>
     <!-- start body -->
-<?php checkAuth(true) ?>
