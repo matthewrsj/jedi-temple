@@ -20,7 +20,7 @@
     mysql_select_db($dbname, $mysql_handle)
         or die("Error selecting database: $dbname");
 
-    $query = "SELECT * FROM users ORDER BY midichlorians DESC LIMIT 1";
+    $query = "SELECT * FROM users ORDER BY midichlorians DESC LIMIT 5";
     $contributors = mysql_query($query);
 
     // output data of each row
