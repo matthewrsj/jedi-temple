@@ -31,7 +31,7 @@
             <div class='row'>
               <h5><a href='" . $row["url"] . "'>" . $row['title'] . "</a> - " .
                 $row["midichlorians"] . " </h5>
-              <p><h6>Users:" . $row["username"] . "</h6></p>
+              <p><h6>Submitted by: " . $row["username"] . "</h6></p>
               <p><h6>" . $row["name"] . "</h6></p>
               ";
               if (checkAuth(false) != "") {
