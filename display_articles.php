@@ -11,19 +11,20 @@
             $dbname = 'malickc-db';
             $dbuser = 'malickc-db';
             $dbpass = 'Jz8QJFUt65lTYY16';
-
+			$num_rec_per_page = 5;
             $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
                 or die("Error connecting to database server");
 
             mysql_select_db($dbname, $mysql_handle)
                 or die("Error selecting database: $dbname");
-
+			if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+			$start_from = ($page-1) * $num_rec_per_page;
             $query = "SELECT articles.title, articles.url, articles.user_id, articles.category_id,
                 articles.midichlorians, users.username, categories.name, articles.time_submitted
                 FROM articles, users, categories
                 WHERE articles.user_id = users.id AND articles.category_id = categories.id
                 ORDER BY articles.time_submitted DESC
-                LIMIT 5";
+                LIMIT $start_from, $num_rec_per_page";
             $articles = mysql_query($query);
               while($row = mysql_fetch_array($articles)) {
             echo "
@@ -52,9 +53,22 @@
                 }
               }
 
-          mysql_close($mysql_handle);
           ?>
-        </form>
+		</form>
+		<?php 
+			$sql = "SELECT * FROM articles";
+			$rs_result = mysql_query($sql); //run the query
+			$total_records = mysql_num_rows($rs_result);  //count number of records
+			$total_pages = floor($total_records / $num_rec_per_page);
+
+			echo "<a href='display_articles.php?page=1'>".'|<'."</a> "; // Goto 1st page  
+
+			for ($i=1; $i<=$total_pages; $i++) { 
+							echo "<a href='display_articles.php?page=".$i."'>".$i."</a> "; 
+			}; 
+			echo "<a href='display_articles.php?page=$total_pages'>".'>|'."</a> "; // Goto last page
+          mysql_close($mysql_handle);
+		?>
       </div>
     </div>
 
