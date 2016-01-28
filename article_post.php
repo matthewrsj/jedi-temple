@@ -30,6 +30,8 @@
 
 	mysql_close($mysql_handle);
 
+	header('Location: http://web.engr.oregonstate.edu/~malickc/latest_articles.php');
+	die();
 	echo '<h1>Thank you for submitting your information!</h1> <br> <a href="index.php">Home Page</a>';
 	echo $result
 
