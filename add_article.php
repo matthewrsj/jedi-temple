@@ -5,7 +5,7 @@
       </div>
       <div class="row">
         <div class="jumbotron">
-          <form class="" action="index.html" method="post">
+          <form class="" action="article_post.php" method="POST">
             <div class="form-group">
               <label for="title">Title</label>
               <input class="form-control" type="textbox" id="title" name="title" value="" placeholder="Title">
@@ -15,12 +15,29 @@
               <input class="form-control" type="textbox" id="link" name="link" value="" placeholder="url">
             </div>
             <div class="form-group">
-              <label for="category">Category</label>
-              <select class="form-control" name="">
-                <option value="network">Network Security</option>
-                <option value="physical">Physical Security</option>
-                <option value="cryptography">Cryptography</option>
-                <option value="misc">Misc</option>
+              <label for="category_id">Category</label>
+              <select class="form-control" name="category_id">
+                <?php
+                    $dbhost = 'oniddb.cws.oregonstate.edu';
+                    $dbname = 'malickc-db';
+                    $dbuser = 'malickc-db';
+                    $dbpass = 'Jz8QJFUt65lTYY16';
+
+                    $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
+                        or die("Error connecting to database server");
+
+                    mysql_select_db($dbname, $mysql_handle)
+                        or die("Error selecting database: $dbname");
+
+                    $query = "SELECT categories.id, categories.name
+                        FROM categories";
+
+                    $categories = mysql_query($query);
+                      while($row = mysql_fetch_array($categories)) {
+                        echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
+                      }
+                      mysql_close($mysql_handle);
+                  ?>
               </select>
             </div>
               <div class="form-group">
