@@ -1,4 +1,10 @@
 <?php include('header.php') ?>
+<div class="container">
+<div class="row">
+  <h3>Top Contributors</h3>
+</div>
+<div class="row">
+  <div class="jumbotron">
 <?php
 
     $dbhost = 'oniddb.cws.oregonstate.edu';
@@ -7,33 +13,31 @@
     $dbpass = 'Jz8QJFUt65lTYY16';
 
 
-
-    $tableName = 'contributors';
-
     // Create connection
-    $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
+        or die("Error connecting to database server");
 
-    echo 'Successfully connected to database!';
+    mysql_select_db($dbname, $mysql_handle)
+        or die("Error selecting database: $dbname");
 
-    $sql = "SELECT * FROM $tableName ORDER BY midi_count DESC LIMIT 1";
-    $result = $conn->query($sql);
+    $query = "SELECT * FROM users ORDER BY midichlorians DESC LIMIT 1";
+    $contributors = mysql_query($query);
 
-    if ($result->num_rows > 0) {
-        //create html table
-        echo "<table border=1 style=width:100%><tr><th>user_name</th><th>midi_count</th><th>link_latest</th></tr>";
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . $row["user_name"]. "</td><td>" . $row["midi_count"]. "</td><td>" . $row["link_latest"]. "</td></tr>";
-        }
-    } else {
-        echo "0 results!!";
+    // output data of each row
+    while($row = mysql_fetch_array($contributors)) {
+        echo "
+      <div class='container'>
+        <div class='row'>
+          <h4>".$row["username"]."</h4>
+          <p><h6>Midichlorians: ".$row["midichlorians"]."</h6></p>
+          </div>
+        </div>";
     }
 
     mysql_close($mysql_handle);
 
     ?>
+  </div>
+</div>
+</div>
 <?php include('footer.php') ?>
