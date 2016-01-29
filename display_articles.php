@@ -58,7 +58,7 @@ function upvote(id){
               <p><h6>Submitted by: " . $row["username"] . "</h6></p>
               <p><h6>" . $row["name"] . "</h6></p>
               </div>";
-              if (checkAuth(false) == "") {
+              if (checkAuth(false) != "") {
               echo "
               <div class='form-group'>
 
