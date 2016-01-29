@@ -40,6 +40,8 @@
                   ?>
               </select>
             </div>
+            <input type="hidden" id="username" name="username" value="<?php $_SESSION["onidid"] ?>">
+            <?php echo "onidid is ".$_SESSION["onidid"]; ?>
             <?php if (checkAuth(false) != "") { ?>
               <div class="form-group">
                 <button type="submit" class="btn btn-default" name="submit">Add Article</button>
