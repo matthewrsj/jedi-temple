@@ -11,17 +11,30 @@
 	mysql_select_db($dbname, $mysql_handle)
     	or die("Error selecting database: $dbname");
 
+  $query1="SELECT users.id
+           FROM users
+           WHERE users.username = ".$_POST['username'];
+
+  echo "post username = ".$_POST['username'];
+
+  $userids = mysql_query($query1);
+  while($row = mysql_fetch_array($userids)) {
+    $userid = $row['id'];
+  }
+
+  echo "userid = ".$userid;
+
 	//echo 'Successfully connected to database!';
 
 	$title = mysql_real_escape_string($_POST['title']);
 	$url = mysql_real_escape_string($_POST['url']);
-	$user_id = mysql_real_escape_string($_POST['user_id']);
+	$user_id = mysql_real_escape_string($userid);
 	$category_id = mysql_escape_string($_POST['category_id']);
 	$time_submitted = mysql_escape_string($_POST['time_submitted']);
 
 
 	$query="INSERT INTO articles(id, title, url, user_id, category_id, midichlorians, time_submitted)
-	    VALUES (NULL, '$title','$url', 1, '$category_id', 0, CURDATE())";
+	    VALUES (NULL, '$title','$url', '$user_id', '$category_id', 0, NOW())";
 
 	$result = mysql_query($query);
 	if (!$result) {

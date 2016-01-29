@@ -23,6 +23,31 @@ function checkAuth($doRedirect) {
     if ($matches && count($matches) > 1) {
       $onidid = $matches[1];
       $_SESSION["onidid"] = $onidid;
+      $dbhost = 'oniddb.cws.oregonstate.edu';
+      $dbname = 'malickc-db';
+      $dbuser = 'malickc-db';
+      $dbpass = 'Jz8QJFUt65lTYY16';
+      $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
+        	or die("Error connecting to database server");
+
+    	mysql_select_db($dbname, $mysql_handle)
+        	or die("Error selecting database: $dbname");
+
+      $checkUserID = mysql_query("SELECT * FROM users WHERE users.username = '$onidid'");
+
+    if (!$checkUserID) {
+        die('Query failed to execute for some reason');
+    }
+
+    if (mysql_num_rows($checkUserID) == false) {
+        $email = $onidid."@oregonstate.edu";
+        $insert_query = "INSERT INTO users(id, username, email, midichlorians)
+                         VALUES (NULL, '$onidid', '$email', 0 )";
+        $result = mysql_query($insert_query);
+        if (!$result) {
+          die('Invalid query: ' . mysql_error());
+        }
+    }
       return $onidid;
     }
   } else if ($doRedirect) {
