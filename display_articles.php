@@ -1,11 +1,33 @@
 <?php include('header.php') ?>
+<script>
+function downvote(id){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function(){
+	if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
+		document.getElementById( "article" + id ).innerHTML = xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("GET", "downvote.php?id=" + id, true);
+	xmlhttp.send();
+}
+function upvote(id){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function(){
+	if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
+		document.getElementById( "article" + id ).innerHTML = xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("GET", "upvote.php?id=" + id, true);
+	xmlhttp.send();
+}
+</script>
   <div class="container">
     <div class="row">
       <h3>Current Articles</h3>
     </div>
     <div class="row">
       <div class="jumbotron">
-        <form class="" action="index.html" method="post">
+        <div>
           <?php
             $dbhost = 'oniddb.cws.oregonstate.edu';
             $dbname = 'malickc-db';
@@ -19,7 +41,7 @@
                 or die("Error selecting database: $dbname");
 			if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
 			$start_from = ($page-1) * $num_rec_per_page;
-            $query = "SELECT articles.title, articles.url, articles.user_id, articles.category_id,
+            $query = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
                 articles.midichlorians, users.username, categories.name, articles.time_submitted
                 FROM articles, users, categories
                 WHERE articles.user_id = users.id AND articles.category_id = categories.id
@@ -29,19 +51,20 @@
               while($row = mysql_fetch_array($articles)) {
             echo "
           <div class='container'>
-            <div class='row'>
-              <h5><a href='" . $row["url"] . "'>" . $row['title'] . "</a> - " .
+			<div class='row'>
+            <div class='row' id='article" . $row['id'] . "'>
+              <h5><a href='" . $row["url"] . "'>" . $row['title'] . "</a>  " .
                 $row["midichlorians"] . " </h5>
               <p><h6>Submitted by: " . $row["username"] . "</h6></p>
               <p><h6>" . $row["name"] . "</h6></p>
-              ";
-              if (checkAuth(false) != "") {
+              </div>";
+              if (checkAuth(false) == "") {
               echo "
               <div class='form-group'>
 
-                <button class='btn btn-default' type='upvote' name='upvote'>Upvote</button>
+                <button class='btn btn-default' type='upvote' onclick='upvote(" . $row["id"] .");' name='upvote'>Upvote</button>
 
-                <button class='btn btn-default' type='downvote' name='downvote'>Downvote</button>
+                <button class='btn btn-default' type='downvote' onclick='downvote(" . $row["id"] . ");' name='downvote'>Downvote</button>
                   </div>
                   </div>
                   </div>
@@ -54,7 +77,7 @@
               }
 
           ?>
-		</form>
+		</div>
 			<nav>
 				<ul class = "pagination">
 			<?php 
