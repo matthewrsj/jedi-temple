@@ -11,8 +11,8 @@
               <input class="form-control" type="textbox" id="title" name="title" value="" placeholder="Title">
             </div>
             <div class="form-group">
-              <label for="link">Link to Article</label>
-              <input class="form-control" type="textbox" id="link" name="link" value="" placeholder="url">
+              <label for="url">Link to Article</label>
+              <input class="form-control" type="textbox" id="url" name="url" value="" placeholder="url">
             </div>
             <div class="form-group">
               <label for="category_id">Category</label>
