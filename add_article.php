@@ -11,8 +11,8 @@
               <input class="form-control" type="textbox" id="title" name="title" value="" placeholder="Title" required autofocus>
             </div>
             <div class="form-group">
-              <label for="link">Link to Article</label>
-              <input class="form-control" type="textbox" id="link" name="link" value="" placeholder="http://example.com/sweet-article" required>
+              <label for="url">Link to Article</label>
+              <input class="form-control" type="textbox" id="url" name="url" value="" placeholder="http://example.com/sweet-article" required>
             </div>
             <div class="form-group">
               <label for="category_id">Category</label>
