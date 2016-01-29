@@ -8,11 +8,11 @@
           <form class="" action="article_post.php" method="POST">
             <div class="form-group">
               <label for="title">Title</label>
-              <input class="form-control" type="textbox" id="title" name="title" value="" placeholder="Title">
+              <input class="form-control" type="textbox" id="title" name="title" value="" placeholder="Title" required autofocus>
             </div>
             <div class="form-group">
               <label for="link">Link to Article</label>
-              <input class="form-control" type="textbox" id="link" name="link" value="" placeholder="url">
+              <input class="form-control" type="textbox" id="link" name="link" value="" placeholder="http://example.com/sweet-article" required>
             </div>
             <div class="form-group">
               <label for="category_id">Category</label>
