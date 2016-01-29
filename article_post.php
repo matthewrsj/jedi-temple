@@ -15,10 +15,14 @@
            FROM users
            WHERE users.username = ".$_POST['username'];
 
+  echo "post username = ".$_POST['username'];
+
   $userids = mysql_query($query1);
-  while($row = mysql_fetch_array($userid)) {
+  while($row = mysql_fetch_array($userids)) {
     $userid = $row['id'];
   }
+
+  echo "userid = ".$userid;
 
 	//echo 'Successfully connected to database!';
 

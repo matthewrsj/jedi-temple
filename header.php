@@ -32,14 +32,14 @@ function checkAuth($doRedirect) {
 
     	mysql_select_db($dbname, $mysql_handle)
         	or die("Error selecting database: $dbname");
-          
-      $checkUserID = mysql_query("SELECT users.username FROM users WHERE users.username = '$onidid'");
+
+      $checkUserID = mysql_query("SELECT * FROM users WHERE users.username = '$onidid'");
 
     if (!$checkUserID) {
         die('Query failed to execute for some reason');
     }
 
-    if (mysql_num_rows($checkUserId) == 0) {
+    if (mysql_num_rows($checkUserID) == false) {
         $email = $onidid."@oregonstate.edu";
         $insert_query = "INSERT INTO users(id, username, email, midichlorians)
                          VALUES (NULL, '$onidid', '$email', 0 )";
