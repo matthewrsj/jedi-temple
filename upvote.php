@@ -5,15 +5,17 @@
 		$dbpass = 'Jz8QJFUt65lTYY16';
 		$mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
 			or die("Error connecting to database server");
-			if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
-			$num_rec_per_page = 5;
 
 		mysql_select_db($dbname, $mysql_handle)
 			or die("Error selecting database: $dbname");
-		$query = "UPDATE articles SET midichlorians = midichlorians + 1 where id = " . $_GET['id'];
+
+		$query = "UPDATE articles
+			JOIN users ON articles.user_id = users.id
+			SET articles.midichlorians = articles.midichlorians +1,
+			users.midichlorians = users.midichlorians + 1
+			WHERE articles.id = " . $_GET['id'];
 		mysql_query($query);
-?>
-		<?php
+
 			$start_from = ($page-1) * $num_rec_per_page;
 			$query = "SELECT *, users.midichlorians AS umidichlorians, articles.midichlorians AS amidichlorians
 						FROM articles
