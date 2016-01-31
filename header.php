@@ -95,7 +95,7 @@ function checkAuth($doRedirect) {
         <li class="Articles">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Articles<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="display_articles.php">Latest Articles</a></li>
+            <li><a href="latest_articles.php">Latest Articles</a></li>
             <li><a href="display_articles.php">All Articles</a></li>
             <!--<li><a href="add_article.php">Submit an Article</a></li> -->
             <!-- <li><a href="#">Something else here</a></li> -->

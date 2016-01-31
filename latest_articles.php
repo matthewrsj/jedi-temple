@@ -1,7 +1,7 @@
 <?php include('header.php') ?>
   <div class="container">
     <div class="row">
-      <h3>Current Articles</h3>
+      <h3>Latest Articles</h3>
     </div>
     <div class="row">
       <div class="jumbotron">
