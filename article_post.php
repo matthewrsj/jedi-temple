@@ -1,4 +1,10 @@
 <?php
+  // start session
+  session_start();
+
+  //grab session information we want
+  $session_id = $_SESSION['onidid'];
+
 	// database connection information
 	$dbhost = 'oniddb.cws.oregonstate.edu';
 	$dbname = 'malickc-db';
@@ -13,16 +19,16 @@
 
   $query1="SELECT users.id
            FROM users
-           WHERE users.username = ".$_POST['username'];
+           WHERE users.username = '$session_id'";
 
-  echo "post username = ".$_POST['username'];
+  //echo "session username = '$session_id'";
 
-  $userids = mysql_query($query1);
-  while($row = mysql_fetch_array($userids)) {
+  $userid = mysql_query($query1);
+  while($row = mysql_fetch_array($userid)) {
     $userid = $row['id'];
   }
 
-  echo "userid = ".$userid;
+  //echo "userid = ".$userid;
 
 	//echo 'Successfully connected to database!';
 
