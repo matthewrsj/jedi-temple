@@ -17,6 +17,7 @@
      <div class="col-md-3">
         <label for="">Latest Articles</label>
         <?php
+          $_SESSION['is_url'] = true;
         	$dbhost = 'oniddb.cws.oregonstate.edu';
         	$dbname = 'malickc-db';
         	$dbuser = 'malickc-db';
