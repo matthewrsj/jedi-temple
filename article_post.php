@@ -33,7 +33,14 @@
 	//echo 'Successfully connected to database!';
 
 	$title = mysql_real_escape_string($_POST['title']);
-	$url = mysql_real_escape_string($_POST['url']);
+  $url = mysql_real_escape_string($_POST['url']);
+  if (filter_var($url, FILTER_VALIDATE_URL) == false){
+    $_SESSION['is_url'] = false;
+    header('Location: http://web.engr.oregonstate.edu/~johnsma8/jedi-temple/add_article.php');
+    die();
+  } else {
+    $_SESSION['is_url'] = true;
+  }
 	$user_id = mysql_real_escape_string($userid);
 	$category_id = mysql_escape_string($_POST['category_id']);
 	$time_submitted = mysql_escape_string($_POST['time_submitted']);
@@ -49,7 +56,7 @@
 
 	mysql_close($mysql_handle);
 
-	header('Location: http://web.engr.oregonstate.edu/~malickc/latest_articles.php');
+	header('Location: http://web.engr.oregonstate.edu/~johnsma8/jedi-temple/display_articles.php');
 	die();
 	echo '<h1>Thank you for submitting your information!</h1> <br> <a href="index.php">Home Page</a>';
 	echo $result
