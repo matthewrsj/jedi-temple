@@ -14,6 +14,7 @@
               <label for="url">Link to Article</label>
         <?php if($_SESSION['is_url'] == false){
             echo "<h6 style='color:red'>Must input a valid url</h6>";
+            $_SESSION['is_url'] == true;
            } ?>
               <input class="form-control" type="textbox" id="url" name="url" value="" placeholder="http://example.com/sweet-article" required>
             </div>
