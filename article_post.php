@@ -43,7 +43,6 @@
   }
 	$user_id = mysql_real_escape_string($userid);
 	$category_id = mysql_escape_string($_POST['category_id']);
-	$time_submitted = mysql_escape_string($_POST['time_submitted']);
 
 
 	$query="INSERT INTO articles(id, title, url, user_id, category_id, midichlorians, time_submitted)
