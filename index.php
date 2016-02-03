@@ -45,8 +45,8 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
             while($row = mysql_fetch_array($articles)) {
         	echo "
 						<a class='list-group-item' href='" . $row["url"] . "'>
-              <h6 class='list-group-item-heading'>" . 
-              $row['title'] . " <span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
+              <h6 class='list-group-item-heading'><b>" . 
+              $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
 							"<p class='list-group-item-text'>User: <span class='badge'>" . $row["username"] . 
               "</span><br>Category: <span class='badge'>" . $row["name"] .
               "</span></p></a>
@@ -83,8 +83,8 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
             while($row = mysql_fetch_array($articles)) {
         	echo "
 				<a class='list-group-item' href='" . $row["url"] . "'>
-              <h6 class='list-group-item-heading'>" . 
-              $row['title'] . " <span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
+              <h6 class='list-group-item-heading'><b>" . 
+              $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
               "<p class='list-group-item-text'>User: <span class='badge'>" . $row["username"] . 
               "</span><br>Category: <span class='badge'>" . $row["name"] .
               "</span></p></a>
@@ -118,7 +118,7 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
             while($row = mysql_fetch_array($contributors)) {
                 echo "
                   <a class='list-group-item' href='#'>
-                  <h4 class='list-group-item-heading'>".$row["username"]."</h4>
+                  <h5 class='list-group-item-heading'>".$row["username"]."</h5>
                   <p><h6>Midichlorians: <span class='badge'>".$row["midichlorians"]."</span></h6></p></a>
                   ";
             }
