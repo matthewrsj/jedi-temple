@@ -82,7 +82,6 @@ function upvote(id){
              $res = mysql_query($query1);
             $total_records = mysql_num_rows($res);
 				$total_pages = floor($total_records / $num_rec_per_page);
-        echo "total_records ".$total_records;
 
 				echo "<li><a href='display_articles.php?page=1'>".'|<'."</a></li> "; // Goto 1st page  
 
