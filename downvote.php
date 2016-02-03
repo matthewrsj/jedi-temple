@@ -27,9 +27,9 @@
 			  echo "
               <h6 class='list-group-item-heading'><b>" . 
               $row['title'] . " </b><span class='badge'>" . $row["amidichlorians"] . "</span></h6>" .
-              "<p class='list-group-item-text'>User: <span class='badge'>" . $row["username"] . 
-              "</span><br>Category: <span class='badge'>" . $row["name"] .
-              "</span></p>
+              "<p class='list-group-item-text'>User: " . $row["username"] . 
+              "<br>Category: " . $row["name"] .
+              "</p>
               ";			        
               }
 		?>
