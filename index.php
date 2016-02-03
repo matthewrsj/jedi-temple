@@ -48,8 +48,8 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
               <h6 class='list-group-item-heading'><b>" . 
               $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
 							"<p class='list-group-item-text'>User: " . $row["username"] . 
-              "</span><br>Category: " . $row["name"] .
-              "</span></p></a>
+              "<br>Category: " . $row["name"] .
+              "</p></a>
 		        	";
           }
 			mysql_close($mysql_handle);
