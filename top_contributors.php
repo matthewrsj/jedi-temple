@@ -4,7 +4,7 @@
   <h3>Top Contributors</h3>
 </div>
 <div class="row">
-  <div class="jumbotron">
+  <div class="">
 <?php
 
     $dbhost = 'oniddb.cws.oregonstate.edu';
@@ -26,12 +26,9 @@
     // output data of each row
     while($row = mysql_fetch_array($contributors)) {
         echo "
-      <div class='container'>
-        <div class='row'>
-          <h4>".$row["username"]."</h4>
-          <p><h6>Midichlorians: ".$row["midichlorians"]."</h6></p>
-          </div>
-        </div>";
+            <a class='list-group-item' href='#'>
+            <h5 class='list-group-item-heading'>".$row["username"]."</h5>
+            <p><h6>Midichlorians: <span class='badge'>".$row["midichlorians"]."</span></h6></p></a>";
     }
 
     mysql_close($mysql_handle);

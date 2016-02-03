@@ -9,8 +9,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="jumbotron container-fluid">
-      <div class="col-md-3">
+    <div class="container-fluid">
+      <div class="col-md-2">
         <label for="">Latest Feed</label><br>
         <!-- start feedwind code -->
 <script type="text/javascript">
@@ -21,6 +21,7 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
     </div>
      <div class="col-md-3">
         <label for="">Latest Articles</label>
+        <div class="list-group">
         <?php
           $_SESSION['is_url'] = true;
         	$dbhost = 'oniddb.cws.oregonstate.edu';
@@ -43,22 +44,21 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
         	$articles = mysql_query($query);
             while($row = mysql_fetch_array($articles)) {
         	echo "
-				<div class='container'>
-					<div class='row'>
-						<h5><a href='" . $row["url"] . "'>" . $row['title'] . "</a> - " .
-							$row["midichlorians"] . " </h5>
-						<p><h6>Users:" . $row["username"] . "</h6></p>
-						<p><h6>" . $row["name"] . "</h6></p>
-                    </div>
-                </div>
-				<hr>
-			";
-            }
+						<a class='list-group-item' href='" . $row["url"] . "'>
+              <h6 class='list-group-item-heading'><b>" . 
+              $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
+							"<p class='list-group-item-text'>User: <span class='badge'>" . $row["username"] . 
+              "</span><br>Category: <span class='badge'>" . $row["name"] .
+              "</span></p></a>
+		        	";
+          }
 			mysql_close($mysql_handle);
         ?>
       </div>
+      </div>
       <div class="col-md-3">
         <label for="">Most Influencial Articles</label>
+         <div class="list-group">
 		<?php
 			$dbhost = 'oniddb.cws.oregonstate.edu';
         	$dbname = 'malickc-db';
@@ -82,19 +82,17 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
         	$articles = mysql_query($query);
             while($row = mysql_fetch_array($articles)) {
         	echo "
-				<div class='container'>
-					<div class='row'>
-						<h5><a href='" . $row["url"] . "'>" . $row['title'] . "</a> - " .
-							$row["midichlorians"] . " </h5>
-						<p><h6>User: " . $row["username"] . "</h6></p>
-						<p><h6>" . $row["name"] . "</h6></p>
-                    </div>
-                </div>
-				<hr>
-			";
+				<a class='list-group-item' href='" . $row["url"] . "'>
+              <h6 class='list-group-item-heading'><b>" . 
+              $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
+              "<p class='list-group-item-text'>User: <span class='badge'>" . $row["username"] . 
+              "</span><br>Category: <span class='badge'>" . $row["name"] .
+              "</span></p></a>
+			         ";
             }
 			mysql_close($mysql_handle);
 		?>
+        </div>
       </div>
       <div class="col-md-3">
         <label for="">Most Powerful Contributors</label>
@@ -119,12 +117,10 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
             // output data of each row
             while($row = mysql_fetch_array($contributors)) {
                 echo "
-              <div class='container'>
-                <div class='row'>
-                  <h4>".$row["username"]."</h4>
-                  <p><h6>Midichlorians: ".$row["midichlorians"]."</h6></p>
-                  </div>
-                </div>";
+                  <a class='list-group-item' href='#'>
+                  <h5 class='list-group-item-heading'>".$row["username"]."</h5>
+                  <p><h6>Midichlorians: <span class='badge'>".$row["midichlorians"]."</span></h6></p></a>
+                  ";
             }
 
             mysql_close($mysql_handle);
