@@ -52,9 +52,9 @@ function upvote(id){
             <a class='list-group-item' id='article" . $row["id"] . "' href='" . $row["url"] . "'>
               <h6 class='list-group-item-heading'><b>" . 
               $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
-              "<p class='list-group-item-text'>User: <span class='badge'>" . $row["username"] . 
-              "</span><br>Category: <span class='badge'>" . $row["name"] .
-              "</span></p></a>
+              "<p class='list-group-item-text'>User: " . $row["username"] . 
+              "<br>Category: " . $row["name"] .
+              "</p></a>
               ";			        
               if (checkAuth(false) != "") {
               echo "

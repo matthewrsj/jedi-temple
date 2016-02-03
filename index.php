@@ -47,8 +47,8 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
 						<a class='list-group-item' href='" . $row["url"] . "'>
               <h6 class='list-group-item-heading'><b>" . 
               $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
-							"<p class='list-group-item-text'>User: <span class='badge'>" . $row["username"] . 
-              "</span><br>Category: <span class='badge'>" . $row["name"] .
+							"<p class='list-group-item-text'>User: " . $row["username"] . 
+              "</span><br>Category: " . $row["name"] .
               "</span></p></a>
 		        	";
           }
@@ -85,9 +85,9 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
 				<a class='list-group-item' href='" . $row["url"] . "'>
               <h6 class='list-group-item-heading'><b>" . 
               $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
-              "<p class='list-group-item-text'>User: <span class='badge'>" . $row["username"] . 
-              "</span><br>Category: <span class='badge'>" . $row["name"] .
-              "</span></p></a>
+              "<p class='list-group-item-text'>User: " . $row["username"] . 
+              "<br>Category: " . $row["name"] .
+              "</p></a>
 			         ";
             }
 			mysql_close($mysql_handle);
