@@ -88,8 +88,22 @@ function upvote(id){
 
 				echo "<li><a href='display_articles.php?page=1'>".'|<'."</a></li> "; // Goto 1st page  
 
-				for ($i=1; $i<=$total_pages; $i++) { 
-								echo "<li><a href='display_articles.php?page=".$i."'>".$i."</a><li> "; 
+        echo "<li><a href='display_articles.php?page=1'>1</a></li> ";
+
+        if ($page < 4) {
+          $istart = 2;
+        } else {
+          $istart = $page - 2;
+        } 
+
+        if ($page > $total_pages - 2) {
+          $iend = $total_pages;
+        } else {
+          $iend = $page + 2;
+        }
+
+				for ($i=$istart; $i<$iend + 1; $i++) { 
+								echo "<li><a href='display_articles.php?page=".$i."'>".$i."</a></li> "; 
 				}; 
 				echo "<li><a href='display_articles.php?page=$total_pages'>".'>|'."</a></li> "; // Goto last page
 			  mysql_close($mysql_handle);
