@@ -26,7 +26,7 @@ function upvote(id){
       <h3>Top Articles</h3>
     </div>
     <div class="row">
-      <div class="jumbotron">
+      <div class="list-group">
         <div>
           <?php
             $dbhost = 'oniddb.cws.oregonstate.edu';
@@ -47,32 +47,26 @@ function upvote(id){
             $articles = mysql_query($query);
               while($row = mysql_fetch_array($articles)) {
             echo "
-          <div class='container'>
-			<div class='row'>
-            <div class='row' id='article" . $row['id'] . "'>
-              <h5><a href='" . $row["url"] . "'>" . $row['title'] . "</a>  " .
-                $row["midichlorians"] . " </h5>
-              <p><h6>Submitted by: " . $row["username"] . "</h6></p>
-              <p><h6>" . $row["name"] . "</h6></p>
-              </div>";
+           <a class='list-group-item' id='article" . $row["id"] . "' href='" . $row["url"] . "'>
+              <h6 class='list-group-item-heading'><b>" . 
+              $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
+              "<p class='list-group-item-text'>User: <span class='badge'>" . $row["username"] . 
+              "</span><br>Category: <span class='badge'>" . $row["name"] .
+              "</span></p></a>
+              ";              
               if (checkAuth(false) != "") {
               echo "
               <div class='form-group'>
-
                 <button class='btn btn-default' type='upvote' onclick='upvote(" . $row["id"] .");' name='upvote'>Upvote</button>
-
                 <button class='btn btn-default' type='downvote' onclick='downvote(" . $row["id"] . ");' name='downvote'>Downvote</button>
-                  </div>
-                  </div>
-                  </div>
-                  <hr>
+              </div>
                 ";
                 }
               else {
-                echo "Log in to vote on this article.<hr>";
+                echo "Log in to vote on this article.
+                ";
                 }
               }
-
           ?>
 		</div>
       </div>
