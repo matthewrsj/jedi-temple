@@ -75,10 +75,14 @@ function upvote(id){
 			<nav>
 				<ul class = "pagination">
 			<?php 
-				$sql = "SELECT * FROM articles";
-				$rs_result = mysql_query($sql); //run the query
-				$total_records = mysql_num_rows($rs_result);  //count number of records
+            $query1 = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
+                articles.midichlorians, users.username, categories.name, articles.time_submitted
+                FROM articles, users, categories
+                WHERE articles.user_id = users.id AND articles.category_id = categories.id";
+             $res = mysql_query($query1);
+            $total_records = mysql_num_rows($res);
 				$total_pages = floor($total_records / $num_rec_per_page);
+        echo "total_records ".$total_records;
 
 				echo "<li><a href='display_articles.php?page=1'>".'|<'."</a></li> "; // Goto 1st page  
 
