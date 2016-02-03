@@ -24,11 +24,12 @@
 						WHERE articles.id = ". $_GET['id'];
             $articles = mysql_query($query);
               while($row = mysql_fetch_array($articles)) {
-			  echo "
-              <h5><a href='" . $row["url"] . "'>" . $row['title'] . "</a>  " .
-                $row["amidichlorians"] . " </h5>
-              <p><h6>Submitted by: " . $row["username"] . "</h6></p>
-              <p><h6>" . $row["name"] . "</h6></p>
-                ";
+			   echo "
+            <h6 class='list-group-item-heading'><b>" . 
+              $row['title'] . " </b><span class='badge'>" . $row["amidichlorians"] . "</span></h6>" .
+              "<p class='list-group-item-text'>User: <span class='badge'>" . $row["username"] . 
+              "</span><br>Category: <span class='badge'>" . $row["name"] .
+              "</span></p>
+              ";			        
               }
 		?>
