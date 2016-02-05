@@ -90,7 +90,7 @@ function upvote(id){
             $query1 = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
                 articles.midichlorians, users.username, categories.name, articles.time_submitted
                 FROM articles, users, categories
-                WHERE articles.user_id = users.id AND articles.category_id = categories.idAND articles.category_id = $category";
+                WHERE articles.user_id = users.id AND articles.category_id = categories.id AND articles.category_id = $category";
              $res = mysql_query($query1);
             $total_records = mysql_num_rows($res);
 				$total_pages = floor($total_records / $num_rec_per_page);
