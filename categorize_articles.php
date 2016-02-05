@@ -40,10 +40,10 @@ function upvote(id){
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="categorize_articles.php?page=1&category=1">Network Security</a></li>
-                        <li><a href="categorize_articles.php?page=1&category=2">Physical Security</a></li>
-                        <li><a href="categorize_articles.php?page=1&category=3">Cryptography</a></li>
-                        <li><a href="categorize_articles.php?page=1&category=4">Misc</a></li>
+                        <li><a href="categorize_articles.php?page=1&amp;category=1">Network Security</a></li>
+                        <li><a href="categorize_articles.php?page=1&amp;category=2">Physical Security</a></li>
+                        <li><a href="categorize_articles.php?page=1&amp;category=3">Cryptography</a></li>
+                        <li><a href="categorize_articles.php?page=1&amp;category=4">Misc</a></li>
                     </ul>
                 </div>
 
