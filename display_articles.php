@@ -48,14 +48,23 @@ function upvote(id){
                 LIMIT $start_from, $num_rec_per_page";
             $articles = mysql_query($query);
               while($row = mysql_fetch_array($articles)) {
-            echo "
-            <a class='list-group-item' id='article" . $row["id"] . "' href='" . $row["url"] . "'>
-              <h6 class='list-group-item-heading'><b>" . 
-              $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
-              "<p class='list-group-item-text'>User: " . $row["username"] . 
-              "<br>Category: " . $row["name"] .
+
+								//Sanatize outputs from html/javascript injection
+								$id = htmlspecialchars($row["id"]);
+								$url = htmlspecialchars($row["url"]);
+								$title = htmlspecialchars($row["title"]);
+								$midichlorians = htmlspecialchars($row["midichlorians"]);
+								$username = htmlspecialchars($row["username"]);
+								$name = htmlspecialchars($row["name"]);
+
+								echo "
+            <a class='list-group-item' id='article" . $id . "' href='" . $url . "'>
+              <h6 class='list-group-item-heading'><b>" .
+              $title . " </b><span class='badge'>" . $midichlorians . "</span></h6>" .
+              "<p class='list-group-item-text'>User: " . $username .
+              "<br>Category: " . $name .
               "</p></a>
-              ";			        
+              ";
               if (checkAuth(false) != "") {
               echo "
               <div class='form-group'>
@@ -74,7 +83,7 @@ function upvote(id){
 		</div>
 			<nav>
 				<ul class = "pagination">
-			<?php 
+			<?php
             $query1 = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
                 articles.midichlorians, users.username, categories.name, articles.time_submitted
                 FROM articles, users, categories
@@ -83,7 +92,7 @@ function upvote(id){
             $total_records = mysql_num_rows($res);
 				$total_pages = floor($total_records / $num_rec_per_page);
 
-				echo "<li><a href='display_articles.php?page=1'>".'|<'."</a></li> "; // Goto 1st page  
+				echo "<li><a href='display_articles.php?page=1'>".'|<'."</a></li> "; // Goto 1st page
 
         echo "<li><a href='display_articles.php?page=1'>1</a></li> ";
 
@@ -91,7 +100,7 @@ function upvote(id){
           $istart = 2;
         } else {
           $istart = $page - 2;
-        } 
+        }
 
         if ($page > $total_pages - 2) {
           $iend = $total_pages;
@@ -99,9 +108,9 @@ function upvote(id){
           $iend = $page + 2;
         }
 
-				for ($i=$istart; $i<$iend + 1; $i++) { 
-								echo "<li><a href='display_articles.php?page=".$i."'>".$i."</a></li> "; 
-				}; 
+				for ($i=$istart; $i<$iend + 1; $i++) {
+								echo "<li><a href='display_articles.php?page=".$i."'>".$i."</a></li> ";
+				};
 				echo "<li><a href='display_articles.php?page=$total_pages'>".'>|'."</a></li> "; // Goto last page
 			  mysql_close($mysql_handle);
 			?>
