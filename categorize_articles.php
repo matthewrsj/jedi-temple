@@ -29,15 +29,15 @@ function upvote(id){
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <?php
-                        if($_GET['category'] == 1) {
-                            echo "Network Security";
-                        } else if($_GET['category'] == 2) {
+                        if($_GET['category'] == 2) {
                             echo "Physical Security";
                         } else if($_GET['category'] == 3) {
                             echo "Cryptography";
                         } else if($_GET['category'] == 4) {
                             echo "Misc";
-                        } else { echo "Select a Category"; }
+                        } else($_GET['category'] == 1) {
+                            echo "Network Security";
+                        }
                     ?>
                     <span class="caret"></span>
                 </button>
