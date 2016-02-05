@@ -32,6 +32,7 @@ function upvote(id){
 		  			<option value="Cryptography">Cryptography</option>
 						<option calue="Misc">Misc</option>
 				</select></br>
+				<input type="submit">
 			</form>
 
     </div>
