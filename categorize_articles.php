@@ -24,12 +24,26 @@ function upvote(id){
   <div class="container">
     <div class="row">
       <h3>Current Articles</h3>
-			<select>
-  			<option value="volvo">Volvo</option>
-  			<option value="saab">Saab</option>
-  			<option value="mercedes">Mercedes</option>
-  			<option value="audi">Audi</option>
-			</select>
+			<?php
+				$dbhost = 'oniddb.cws.oregonstate.edu';
+				$dbname = 'malickc-db';
+				$dbuser = 'malickc-db';
+				$dbpass = 'Jz8QJFUt65lTYY16';
+				$mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
+						or die("Error connecting to database server");
+
+				mysql_select_db($dbname, $mysql_handle)
+						or die("Error selecting database: $dbname");
+
+				<select name="selectCategory">
+		  			<option value="">Select</option>
+		  			<option value="Network Security">Network Security</option>
+		  			<option value="Physical Security">Physical Security</option>
+		  			<option value="Cryptography">Cryptography</option>
+						<option calue="Misc">Misc</option>
+				</select></br>
+			?>
+
     </div>
     <div class="row">
       <div class="list-group">
