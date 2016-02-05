@@ -49,9 +49,23 @@ function upvote(id){
                 </ul>
             </div>
             <nav>
-                <ul class = "pagination0">
+                <ul class = "pagination">
                     <?php
-                        $query = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
+                        $dbhost = 'oniddb.cws.oregonstate.edu';
+                        $dbname = 'malickc-db';
+                        $dbuser = 'malickc-db';
+                        $dbpass = 'Jz8QJFUt65lTYY16';
+                        $num_rec_per_page = 5;
+                        $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
+                            or die("Error connecting to database server");
+
+                        mysql_select_db($dbname, $mysql_handle)
+                            or die("Error selecting database: $dbname");
+                        if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+                        if (isset($_GET["category"])) { $category = $_GET["category"]; } else { $category = 0; };
+                        $start_from = ($page-1) * $num_rec_per_page;
+                        
+                        $query1 = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
                             articles.midichlorians, users.username, categories.name, articles.time_submitted
                             FROM articles, users, categories
                             WHERE articles.user_id = users.id AND articles.category_id = categories.id AND articles.category_id = $category";
