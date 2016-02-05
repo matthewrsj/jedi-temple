@@ -95,9 +95,9 @@ function upvote(id){
             $total_records = mysql_num_rows($res);
 				$total_pages = floor($total_records / $num_rec_per_page);
 
-				echo "<li><a href='display_articles.php?page=1'>".'|<'."</a></li> "; // Goto 1st page
+				echo "<li><a href='categorize_articles.php?page=1'>".'|<'."</a></li> "; // Goto 1st page
 
-        echo "<li><a href='display_articles.php?page=1'>1</a></li> ";
+        echo "<li><a href='categorize_articles.php?page=1'>1</a></li> ";
 
         if ($page < 4) {
           $istart = 2;
@@ -112,9 +112,9 @@ function upvote(id){
         }
 
 				for ($i=$istart; $i<$iend + 1; $i++) {
-								echo "<li><a href='display_articles.php?page=".$i."'>".$i."</a></li> ";
+								echo "<li><a href='categorize_articles.php?page=".$i."'>".$i."</a></li> ";
 				};
-				echo "<li><a href='display_articles.php?page=$total_pages'>".'>|'."</a></li> "; // Goto last page
+				echo "<li><a href='categorize_articles.php?page=$total_pages'>".'>|'."</a></li> "; // Goto last page
 			  mysql_close($mysql_handle);
 			?>
 				</ul>
