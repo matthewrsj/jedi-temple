@@ -35,7 +35,7 @@ function upvote(id){
                             echo "Cryptography";
                         } else if($_GET['category'] == 4) {
                             echo "Misc";
-                        } else($_GET['category'] == 1) {
+                        } else {
                             echo "Network Security";
                         }
                     ?>
