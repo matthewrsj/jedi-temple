@@ -25,7 +25,7 @@ function upvote(id){
     <div class="row">
       <h3>Articles by Category</h3>
 				<form action="categorize_articles.php" method="get">
-				<select name="selectCategory">
+				<select name="category">
 		  			<option value="">Select Category</option>
 		  			<option value="Network Security">Network Security</option>
 		  			<option value="Physical Security">Physical Security</option>
