@@ -24,7 +24,6 @@ function upvote(id){
   <div class="container">
     <div class="row">
       <h3>Articles by Category</h3>
-				<form action="categorize_articles.php" method="get">
 					<?php
 	    			$selected = $_GET['category'];
 					?>
@@ -40,15 +39,6 @@ function upvote(id){
 					    <li><a href="categorize_articles.php?page=1&category=4">Misc</a></li>
 					  </ul>
 					</div>
-					<select name="category">
-			  			<option value="">Select Category</option>
-			  			<option value="1" <?php if($selected == '1'){echo("selected");}?>>Network Security</option>
-			  			<option value="2" <?php if($selected == '2'){echo("selected");}?>>Physical Security</option>
-			  			<option value="3" <?php if($selected == '3'){echo("selected");}?>>Cryptography</option>
-							<option value="4" <?php if($selected == '4'){echo("selected");}?>>Misc</option>
-					</select></br>
-					<input type="submit">
-				</form>
 
     </div>
     <div class="row">
