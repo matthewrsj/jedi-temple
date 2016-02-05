@@ -23,7 +23,7 @@ function upvote(id){
 </script>
   <div class="container">
     <div class="row">
-      <h3>Current Articles</h3>
+      <h3>Articles by Category</h3>
 
 				<select name="selectCategory">
 		  			<option value="">Select</option>
