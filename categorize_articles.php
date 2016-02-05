@@ -62,7 +62,7 @@ function upvote(id){
                         mysql_select_db($dbname, $mysql_handle)
                             or die("Error selecting database: $dbname");
                         if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
-                        if (isset($_GET["category"])) { $category = $_GET["category"]; } else { $category = 0; };
+                        if (isset($_GET["category"])) { $category = $_GET["category"]; } else { $category = 1; };
                         $start_from = ($page-1) * $num_rec_per_page;
                         $query1 = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
                             articles.midichlorians, users.username, categories.name, articles.time_submitted
