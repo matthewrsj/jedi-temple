@@ -23,17 +23,13 @@ function upvote(id){
 </script>
   <div class="container">
     <div class="row">
-			<ul class="dropdown-menu">
-				<li><a href="top_articles.php">Top Articles</a></li>
-				<li><a href="display_articles.php">All Articles</a></li>
-				<li><a href="categorize_articles.php">By Category</a></li>
-				<!--<li><a href="add_article.php">Submit an Article</a></li> -->
-				<!-- <li><a href="#">Something else here</a></li> -->
-				<li role="separator" class="divider"></li>
-				<li><a href="add_article.php">Submit Article</a></li>
-				<!-- <li role="separator" class="divider"></li>
-				<li><a href="#">One more separated link</a></li> -->
-			</ul>
+      <h3>Current Articles</h3>
+			<select>
+  			<option value="volvo">Volvo</option>
+  			<option value="saab">Saab</option>
+  			<option value="mercedes">Mercedes</option>
+  			<option value="audi">Audi</option>
+			</select>
     </div>
     <div class="row">
       <div class="list-group">
