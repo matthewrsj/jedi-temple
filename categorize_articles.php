@@ -48,6 +48,41 @@ function upvote(id){
                     <li><a href="categorize_articles.php?page=1&amp;category=4">Misc</a></li>
                 </ul>
             </div>
+            <nav>
+                <ul class = "pagination0">
+                    <?php
+                        $query = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
+                            articles.midichlorians, users.username, categories.name, articles.time_submitted
+                            FROM articles, users, categories
+                            WHERE articles.user_id = users.id AND articles.category_id = categories.id AND articles.category_id = $category";
+                        $res = mysql_query($query1);
+                        $total_records = mysql_num_rows($res);
+                        $total_pages = floor($total_records / $num_rec_per_page);
+
+                        echo "<li><a href='categorize_articles.php?page=1&category=$category'>".'|<'."</a></li> "; // Goto 1st page
+
+                        echo "<li><a href='categorize_articles.php?page=1&category=$category'>1</a></li> ";
+
+                        if ($page < 4) {
+                            $istart = 2;
+                        } else {
+                            $istart = $page - 2;
+                        }
+
+                        if ($page > $total_pages - 2) {
+                            $iend = $total_pages;
+                        } else {
+                            $iend = $page + 2;
+                        }
+
+                        for ($i=$istart; $i<$iend + 1; $i++) {
+                            echo "<li><a href='categorize_articles.php?page=".$i."&category=$category'>".$i."</a></li> ";
+                        };
+                        echo "<li><a href='categorize_articles.php?page=$total_pages&category=$category'>".'>|'."</a></li> "; // Goto last page
+                        mysql_close($mysql_handle);
+                    ?>
+                </ul>
+            </nav>
         </div>
         <div class="row">
             <div class="list-group">
