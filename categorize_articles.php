@@ -1,51 +1,51 @@
 <?php include('header.php') ?>
 <script>
 function downvote(id){
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function(){
-	    if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
-		    document.getElementById( "article" + id ).innerHTML = xmlhttp.responseText;
-	    }
-	}
-	xmlhttp.open("GET", "downvote.php?id=" + id, true);
-	xmlhttp.send();
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+        if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
+            document.getElementById( "article" + id ).innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", "downvote.php?id=" + id, true);
+    xmlhttp.send();
 }
 function upvote(id){
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function(){
-	    if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
-    	    document.getElementById( "article" + id ).innerHTML = xmlhttp.responseText;
-	}
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+        if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
+            document.getElementById( "article" + id ).innerHTML = xmlhttp.responseText;
     }
-	xmlhttp.open("GET", "upvote.php?id=" + id, true);
+    }
+    xmlhttp.open("GET", "upvote.php?id=" + id, true);
     xmlhttp.send();
 }
 </script>
     <div class="container">
         <div class="row">
             <h3>Articles by Category</h3>
-				<div class="dropdown">
-			        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-					    <?php
-								if($_GET['category'] == 1) {
-									echo "Network Security";
-								} else if($_GET['category'] == 2) {
-									echo "Physical Security";
-								} else if($_GET['category'] == 3) {
-									echo "Cryptography";
-								} else if($_GET['category'] == 4) {
-									echo "Misc";
-								} else { echo "Select a Category"; }
-						?>
-					    <span class="caret"></span>
-				    </button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-					    <li><a href="categorize_articles.php?page=1&category=1">Network Security</a></li>
-					    <li><a href="categorize_articles.php?page=1&category=2">Physical Security</a></li>
-					    <li><a href="categorize_articles.php?page=1&category=3">Cryptography</a></li>
-					    <li><a href="categorize_articles.php?page=1&category=4">Misc</a></li>
-					</ul>
-				</div>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <?php
+                                if($_GET['category'] == 1) {
+                                    echo "Network Security";
+                                } else if($_GET['category'] == 2) {
+                                    echo "Physical Security";
+                                } else if($_GET['category'] == 3) {
+                                    echo "Cryptography";
+                                } else if($_GET['category'] == 4) {
+                                    echo "Misc";
+                                } else { echo "Select a Category"; }
+                        ?>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="categorize_articles.php?page=1&category=1">Network Security</a></li>
+                        <li><a href="categorize_articles.php?page=1&category=2">Physical Security</a></li>
+                        <li><a href="categorize_articles.php?page=1&category=3">Cryptography</a></li>
+                        <li><a href="categorize_articles.php?page=1&category=4">Misc</a></li>
+                    </ul>
+                </div>
 
         </div>
         <div class="row">
@@ -55,15 +55,15 @@ function upvote(id){
                     $dbname = 'malickc-db';
                     $dbuser = 'malickc-db';
                     $dbpass = 'Jz8QJFUt65lTYY16';
-			        $num_rec_per_page = 5;
+                    $num_rec_per_page = 5;
                     $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
                         or die("Error connecting to database server");
 
                     mysql_select_db($dbname, $mysql_handle)
                         or die("Error selecting database: $dbname");
-			        if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
-			        if (isset($_GET["category"])) { $category = $_GET["category"]; } else { $category = 0; };
-			        $start_from = ($page-1) * $num_rec_per_page;
+                    if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+                    if (isset($_GET["category"])) { $category = $_GET["category"]; } else { $category = 0; };
+                    $start_from = ($page-1) * $num_rec_per_page;
                     $query = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
                         articles.midichlorians, users.username, categories.name, articles.time_submitted
                         FROM articles, users, categories
@@ -94,19 +94,19 @@ function upvote(id){
                     }
 
                 ?>
-		    </div>
-			<nav>
-				<ul class = "pagination">
-			        <?php
+            </div>
+            <nav>
+                <ul class = "pagination">
+                    <?php
                         $query1 = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
                             articles.midichlorians, users.username, categories.name, articles.time_submitted
                             FROM articles, users, categories
                             WHERE articles.user_id = users.id AND articles.category_id = categories.id AND articles.category_id = $category";
                         $res = mysql_query($query1);
                         $total_records = mysql_num_rows($res);
-				        $total_pages = floor($total_records / $num_rec_per_page);
+                        $total_pages = floor($total_records / $num_rec_per_page);
 
-				        echo "<li><a href='categorize_articles.php?page=1&category=$category'>".'|<'."</a></li> "; // Goto 1st page
+                        echo "<li><a href='categorize_articles.php?page=1&category=$category'>".'|<'."</a></li> "; // Goto 1st page
 
                         echo "<li><a href='categorize_articles.php?page=1&category=$category'>1</a></li> ";
 
@@ -122,14 +122,14 @@ function upvote(id){
                             $iend = $page + 2;
                         }
 
-				        for ($i=$istart; $i<$iend + 1; $i++) {
-							echo "<li><a href='categorize_articles.php?page=".$i."&category=$category'>".$i."</a></li> ";
-				        };
-				        echo "<li><a href='categorize_articles.php?page=$total_pages&category=$category'>".'>|'."</a></li> "; // Goto last page
-			            mysql_close($mysql_handle);
-			        ?>
-				</ul>
-			</nav>
+                        for ($i=$istart; $i<$iend + 1; $i++) {
+                            echo "<li><a href='categorize_articles.php?page=".$i."&category=$category'>".$i."</a></li> ";
+                        };
+                        echo "<li><a href='categorize_articles.php?page=$total_pages&category=$category'>".'>|'."</a></li> "; // Goto last page
+                        mysql_close($mysql_handle);
+                    ?>
+                </ul>
+            </nav>
         </div>
     </div>
 
