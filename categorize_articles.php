@@ -121,6 +121,15 @@ function upvote(id){
                         LIMIT $start_from, $num_rec_per_page";
                     $articles = mysql_query($query);
                     while($row = mysql_fetch_array($articles)) {
+
+                        //Sanatize outputs from html/javascript injection
+                        $id = htmlspecialchars($row["id"]);
+                        $url = htmlspecialchars($row["url"]);
+                        $title = htmlspecialchars($row["title"]);
+                        $midichlorians = htmlspecialchars($row["midichlorians"]);
+                        $username = htmlspecialchars($row["username"]);
+                        $name = htmlspecialchars($row["name"]);
+
                         echo "
                             <a class='list-group-item' id='article" . $row["id"] . "' href='" . $row["url"] . "'>
                                 <h6 class='list-group-item-heading'><b>" .
