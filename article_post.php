@@ -34,13 +34,6 @@
 
 	$title = mysql_real_escape_string($_POST['title']);
   $url = mysql_real_escape_string($_POST['url']);
-  if (filter_var($url, FILTER_VALIDATE_URL) == false){
-    $_SESSION['is_url'] = false;
-    header('Location: http://web.engr.oregonstate.edu/~johnsma8/jedi-temple/add_article.php');
-    die();
-  } else {
-    $_SESSION['is_url'] = true;
-  }
 	$user_id = mysql_real_escape_string($userid);
 	$category_id = mysql_escape_string($_POST['category_id']);
 

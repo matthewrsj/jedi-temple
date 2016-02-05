@@ -23,7 +23,6 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
         <label for="">Latest Articles</label>
         <div class="list-group">
         <?php
-          $_SESSION['is_url'] = true;
         	$dbhost = 'oniddb.cws.oregonstate.edu';
         	$dbname = 'malickc-db';
         	$dbuser = 'malickc-db';
