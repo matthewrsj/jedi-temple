@@ -23,7 +23,6 @@ function upvote(id){
 </script>
   <div class="container">
     <div class="row">
-      <h3>Current Articles</h3>
 			<ul class="dropdown-menu">
 				<li><a href="top_articles.php">Top Articles</a></li>
 				<li><a href="display_articles.php">All Articles</a></li>
