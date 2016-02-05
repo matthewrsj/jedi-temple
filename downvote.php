@@ -26,15 +26,15 @@
               while($row = mysql_fetch_array($articles)) {
 								//Sanatize outputs from html/javascript injection
 								$title = htmlspecialchars($row["title"]);
-								$midichlorians = htmlspecialchars($row["midichlorians"]);
+								$midichlorians = htmlspecialchars($row["amidichlorians"]);
 								$username = htmlspecialchars($row["username"]);
 								$name = htmlspecialchars($row["name"]);
 			  echo "
               <h6 class='list-group-item-heading'><b>" .
-              $title . " </b><span class='badge'>" . $midichlorians . "</span></h6>" .
+              $title . " </b></h6>" .
               "<p class='list-group-item-text'>User: " . $username .
               "<br>Category: " . $name .
-              "</p>
+              "</p><p class='list-group-item-text'>Midichlorians: <span class='badge'>" . $midichlorians . "</span></p>
               ";
               }
 		?>

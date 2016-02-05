@@ -131,20 +131,19 @@ function upvote(id){
                         $name = htmlspecialchars($row["name"]);
 
                         echo "
-                            <a class='list-group-item' id='article" . $id . "' href='" . $url . "'>
-                                <h6 class='list-group-item-heading'><b>" .
-                                $title . " </b><span class='badge'>" . $midichlorians . "</span></h6>" .
-                                "<p class='list-group-item-text'>User: " . $username .
-                                "<br>Category: " . $name .
-                            "</p></a>
-                            ";
-                        if (checkAuth(false) != "") {
-                            echo "
-                                <div class='form-group'>
-                                    <button class='btn btn-default' type='upvote' onclick='upvote(" . $row["id"] .");' name='upvote'>Upvote</button>
-                                    <button class='btn btn-default' type='downvote' onclick='downvote(" . $row["id"] . ");' name='downvote'>Downvote</button>
-                                </div>
-                                ";
+           <a class='list-group-item' id='article" . $id . "' href='" . $url . "'>
+              <h6 class='list-group-item-heading'><b>" .
+              $title . " </b></h6>" .
+              "<p class='list-group-item-text'>User: " . $username .
+              "<br>Category: " . $name .
+              "</p><p class='list-group-item-text'>Midichlorians: <span class='badge'>" . $midichlorians . "</span></p></a>
+              ";
+              if (checkAuth(false) != "") {
+              echo "
+              <div class='form-group'>
+                <button class='btn btn-default' type='upvote' onclick='upvote(" . $id .");' name='upvote' style='color:green; font-weight:bold'> + </button>
+                <button class='btn btn-default' type='downvote' onclick='downvote(" . $id . ");' name='downvote' style='color:red; font-weight:bold'> - </button>
+              </div>";
                         } else {
                             echo "Log in to vote on this article.
                                 ";
