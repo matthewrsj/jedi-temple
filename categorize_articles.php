@@ -24,29 +24,30 @@ function upvote(id){
     <div class="container">
         <div class="row">
             <h3>Articles by Category</h3>
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <?php
-                                if($_GET['category'] == 1) {
-                                    echo "Network Security";
-                                } else if($_GET['category'] == 2) {
-                                    echo "Physical Security";
-                                } else if($_GET['category'] == 3) {
-                                    echo "Cryptography";
-                                } else if($_GET['category'] == 4) {
-                                    echo "Misc";
-                                } else { echo "Select a Category"; }
-                        ?>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="categorize_articles.php?page=1&amp;category=1">Network Security</a></li>
-                        <li><a href="categorize_articles.php?page=1&amp;category=2">Physical Security</a></li>
-                        <li><a href="categorize_articles.php?page=1&amp;category=3">Cryptography</a></li>
-                        <li><a href="categorize_articles.php?page=1&amp;category=4">Misc</a></li>
-                    </ul>
-                </div>
-
+        </div>
+        <div class="row">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <?php
+                            if($_GET['category'] == 1) {
+                                echo "Network Security";
+                            } else if($_GET['category'] == 2) {
+                                echo "Physical Security";
+                            } else if($_GET['category'] == 3) {
+                                echo "Cryptography";
+                            } else if($_GET['category'] == 4) {
+                                echo "Misc";
+                            } else { echo "Select a Category"; }
+                    ?>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="categorize_articles.php?page=1&amp;category=1">Network Security</a></li>
+                    <li><a href="categorize_articles.php?page=1&amp;category=2">Physical Security</a></li>
+                    <li><a href="categorize_articles.php?page=1&amp;category=3">Cryptography</a></li>
+                    <li><a href="categorize_articles.php?page=1&amp;category=4">Misc</a></li>
+                </ul>
+            </div>
         </div>
         <div class="row">
             <div class="list-group">
