@@ -24,12 +24,17 @@
 						WHERE articles.id = ". $_GET['id'];
             $articles = mysql_query($query);
               while($row = mysql_fetch_array($articles)) {
+								//Sanatize outputs from html/javascript injection
+								$title = htmlspecialchars($row["title"]);
+								$midichlorians = htmlspecialchars($row["midichlorians"]);
+								$username = htmlspecialchars($row["username"]);
+								$name = htmlspecialchars($row["name"]);
 			   echo "
-            <h6 class='list-group-item-heading'><b>" . 
-              $row['title'] . " </b><span class='badge'>" . $row["amidichlorians"] . "</span></h6>" .
-              "<p class='list-group-item-text'>User: " . $row["username"] . 
-              "<br>Category: " . $row["name"] .
+            <h6 class='list-group-item-heading'><b>" .
+              $title . " </b><span class='badge'>" . $midichlorians . "</span></h6>" .
+              "<p class='list-group-item-text'>User: " . $username .
+              "<br>Category: " . $name .
               "</p>
-              ";			        
+              ";
               }
 		?>
