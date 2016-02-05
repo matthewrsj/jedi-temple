@@ -24,6 +24,17 @@ function upvote(id){
   <div class="container">
     <div class="row">
       <h3>Current Articles</h3>
+			<ul class="dropdown-menu">
+				<li><a href="top_articles.php">Top Articles</a></li>
+				<li><a href="display_articles.php">All Articles</a></li>
+				<li><a href="categorize_articles.php">By Category</a></li>
+				<!--<li><a href="add_article.php">Submit an Article</a></li> -->
+				<!-- <li><a href="#">Something else here</a></li> -->
+				<li role="separator" class="divider"></li>
+				<li><a href="add_article.php">Submit Article</a></li>
+				<!-- <li role="separator" class="divider"></li>
+				<li><a href="#">One more separated link</a></li> -->
+			</ul>
     </div>
     <div class="row">
       <div class="list-group">
@@ -50,12 +61,12 @@ function upvote(id){
               while($row = mysql_fetch_array($articles)) {
             echo "
             <a class='list-group-item' id='article" . $row["id"] . "' href='" . $row["url"] . "'>
-              <h6 class='list-group-item-heading'><b>" . 
+              <h6 class='list-group-item-heading'><b>" .
               $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
-              "<p class='list-group-item-text'>User: " . $row["username"] . 
+              "<p class='list-group-item-text'>User: " . $row["username"] .
               "<br>Category: " . $row["name"] .
               "</p></a>
-              ";			        
+              ";
               if (checkAuth(false) != "") {
               echo "
               <div class='form-group'>
@@ -74,7 +85,7 @@ function upvote(id){
 		</div>
 			<nav>
 				<ul class = "pagination">
-			<?php 
+			<?php
             $query1 = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
                 articles.midichlorians, users.username, categories.name, articles.time_submitted
                 FROM articles, users, categories
@@ -83,7 +94,7 @@ function upvote(id){
             $total_records = mysql_num_rows($res);
 				$total_pages = floor($total_records / $num_rec_per_page);
 
-				echo "<li><a href='display_articles.php?page=1'>".'|<'."</a></li> "; // Goto 1st page  
+				echo "<li><a href='display_articles.php?page=1'>".'|<'."</a></li> "; // Goto 1st page
 
         echo "<li><a href='display_articles.php?page=1'>1</a></li> ";
 
@@ -91,7 +102,7 @@ function upvote(id){
           $istart = 2;
         } else {
           $istart = $page - 2;
-        } 
+        }
 
         if ($page > $total_pages - 2) {
           $iend = $total_pages;
@@ -99,9 +110,9 @@ function upvote(id){
           $iend = $page + 2;
         }
 
-				for ($i=$istart; $i<$iend + 1; $i++) { 
-								echo "<li><a href='display_articles.php?page=".$i."'>".$i."</a></li> "; 
-				}; 
+				for ($i=$istart; $i<$iend + 1; $i++) {
+								echo "<li><a href='display_articles.php?page=".$i."'>".$i."</a></li> ";
+				};
 				echo "<li><a href='display_articles.php?page=$total_pages'>".'>|'."</a></li> "; // Goto last page
 			  mysql_close($mysql_handle);
 			?>
