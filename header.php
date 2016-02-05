@@ -97,6 +97,7 @@ function checkAuth($doRedirect) {
           <ul class="dropdown-menu">
             <li><a href="top_articles.php">Top Articles</a></li>
             <li><a href="display_articles.php">All Articles</a></li>
+            <li><a href="categorize_articles.php">By Category</a></li>
             <!--<li><a href="add_article.php">Submit an Article</a></li> -->
             <!-- <li><a href="#">Something else here</a></li> -->
             <li role="separator" class="divider"></li>

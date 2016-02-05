@@ -25,6 +25,54 @@ function upvote(id){
     <div class="row">
       <h3>Current Articles</h3>
     </div>
+    <nav>
+        <ul class = "pagination">
+            <?php
+                $dbhost = 'oniddb.cws.oregonstate.edu';
+                $dbname = 'malickc-db';
+                $dbuser = 'malickc-db';
+                $dbpass = 'Jz8QJFUt65lTYY16';
+                $num_rec_per_page = 5;
+                $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
+                    or die("Error connecting to database server");
+
+                mysql_select_db($dbname, $mysql_handle)
+                    or die("Error selecting database: $dbname");
+                if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+
+                $start_from = ($page-1) * $num_rec_per_page;
+                $query1 = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
+                    articles.midichlorians, users.username, categories.name, articles.time_submitted
+                    FROM articles, users, categories
+                    WHERE articles.user_id = users.id AND articles.category_id = categories.id";
+                $res = mysql_query($query1);
+                $total_records = mysql_num_rows($res);
+                $total_pages = floor($total_records / $num_rec_per_page);
+
+                echo "<li><a href='display_articles.php?page=1'>".'|<'."</a></li> "; // Goto 1st page
+
+                echo "<li><a href='display_articles.php?page=1&category=$category'>1</a></li> ";
+
+                if ($page < 4) {
+                    $istart = 2;
+                } else {
+                    $istart = $page - 2;
+                }
+
+                if ($page > $total_pages - 2) {
+                    $iend = $total_pages;
+                } else {
+                    $iend = $page + 2;
+                }
+
+                for ($i=$istart; $i<$iend + 1; $i++) {
+                    echo "<li><a href='display_articles.php?page=".$i."'>".$i."</a></li> ";
+                };
+                echo "<li><a href='display_articles.php?page=$total_pages'>".'>|'."</a></li> "; // Goto last page
+                mysql_close($mysql_handle);
+            ?>
+        </ul>
+    </nav>
     <div class="row">
       <div class="list-group">
           <?php
