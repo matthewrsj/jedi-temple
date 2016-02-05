@@ -33,6 +33,14 @@ function upvote(id){
 						<option calue="Misc">Misc</option>
 				</select></br>
 
+				<?php
+					if(!isset($_POST['formCategory']) ) {
+						<div class='form-group'>
+							<button class='btn btn-default' type='submitCategory' onclick='' name='submitCategory'>Submit Category</button>
+						</div>
+					}
+				?>
+
     </div>
     <div class="row">
       <div class="list-group">
