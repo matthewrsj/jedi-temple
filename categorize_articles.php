@@ -29,15 +29,15 @@ function upvote(id){
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <?php
-                            if($_GET['category'] == 1) {
-                                echo "Network Security";
-                            } else if($_GET['category'] == 2) {
-                                echo "Physical Security";
-                            } else if($_GET['category'] == 3) {
-                                echo "Cryptography";
-                            } else if($_GET['category'] == 4) {
-                                echo "Misc";
-                            } else { echo "Select a Category"; }
+                        if($_GET['category'] == 1) {
+                            echo "Network Security";
+                        } else if($_GET['category'] == 2) {
+                            echo "Physical Security";
+                        } else if($_GET['category'] == 3) {
+                            echo "Cryptography";
+                        } else if($_GET['category'] == 4) {
+                            echo "Misc";
+                        } else { echo "Select a Category"; }
                     ?>
                     <span class="caret"></span>
                 </button>
@@ -75,17 +75,17 @@ function upvote(id){
                     while($row = mysql_fetch_array($articles)) {
                         echo "
                             <a class='list-group-item' id='article" . $row["id"] . "' href='" . $row["url"] . "'>
-                            <h6 class='list-group-item-heading'><b>" .
-                            $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
-                            "<p class='list-group-item-text'>User: " . $row["username"] .
-                            "<br>Category: " . $row["name"] .
+                                <h6 class='list-group-item-heading'><b>" .
+                                $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
+                                "<p class='list-group-item-text'>User: " . $row["username"] .
+                                "<br>Category: " . $row["name"] .
                             "</p></a>
                             ";
                         if (checkAuth(false) != "") {
                             echo "
                                 <div class='form-group'>
-                                <button class='btn btn-default' type='upvote' onclick='upvote(" . $row["id"] .");' name='upvote'>Upvote</button>
-                                <button class='btn btn-default' type='downvote' onclick='downvote(" . $row["id"] . ");' name='downvote'>Downvote</button>
+                                    <button class='btn btn-default' type='upvote' onclick='upvote(" . $row["id"] .");' name='upvote'>Upvote</button>
+                                    <button class='btn btn-default' type='downvote' onclick='downvote(" . $row["id"] . ");' name='downvote'>Downvote</button>
                                 </div>
                                 ";
                         } else {
