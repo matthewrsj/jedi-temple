@@ -27,10 +27,10 @@ function upvote(id){
 				<form action="categorize_articles.php" method="get">
 				<select name="category">
 		  			<option value="">Select Category</option>
-		  			<option value="Network Security">Network Security</option>
-		  			<option value="Physical Security">Physical Security</option>
-		  			<option value="Cryptography">Cryptography</option>
-						<option calue="Misc">Misc</option>
+		  			<option value="1">Network Security</option>
+		  			<option value="2">Physical Security</option>
+		  			<option value="3">Cryptography</option>
+						<option calue="4">Misc</option>
 				</select></br>
 				<input type="submit">
 			</form>
@@ -50,11 +50,12 @@ function upvote(id){
             mysql_select_db($dbname, $mysql_handle)
                 or die("Error selecting database: $dbname");
 			if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+			if (isset($_GET["category"])) { $category = $_GET["category"]; } else { $category = 0; };
 			$start_from = ($page-1) * $num_rec_per_page;
             $query = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
                 articles.midichlorians, users.username, categories.name, articles.time_submitted
                 FROM articles, users, categories
-                WHERE articles.user_id = users.id AND articles.category_id = categories.id
+                WHERE articles.user_id = users.id AND articles.category_id = categories.id AND articles.category_id = $category
                 ORDER BY articles.time_submitted DESC
                 LIMIT $start_from, $num_rec_per_page";
             $articles = mysql_query($query);
