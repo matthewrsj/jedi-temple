@@ -25,10 +25,14 @@
 
     // output data of each row
     while($row = mysql_fetch_array($contributors)) {
+
+      $midichlorians = htmlspecialchars($row["midichlorians"]);
+      $username = htmlspecialchars($row["username"]);
+
         echo "
             <a class='list-group-item' href='#'>
-            <h5 class='list-group-item-heading'>".$row["username"]."</h5>
-            <p><h6>Midichlorians: <span class='badge'>".$row["midichlorians"]."</span></h6></p></a>";
+            <h5 class='list-group-item-heading'>" . $username . "</h5>
+            <p><h6>Midichlorians: <span class='badge'>".$midichlorians . "</span></h6></p></a>";
     }
 
     mysql_close($mysql_handle);

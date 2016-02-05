@@ -34,7 +34,7 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
         	mysql_select_db($dbname, $mysql_handle)
         	    or die("Error selecting database: $dbname");
 
-        	$query = "SELECT articles.title, articles.url, articles.user_id, articles.category_id, 
+        	$query = "SELECT articles.title, articles.url, articles.user_id, articles.category_id,
 							articles.midichlorians, users.username, categories.name, articles.time_submitted
 							FROM articles, users, categories
 							WHERE articles.user_id = users.id AND articles.category_id = categories.id
@@ -42,12 +42,20 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
 							LIMIT 3";
         	$articles = mysql_query($query);
             while($row = mysql_fetch_array($articles)) {
+              //Sanatize outputs from html/javascript injection
+              $id = htmlspecialchars($row["id"]);
+              $url = htmlspecialchars($row["url"]);
+              $title = htmlspecialchars($row["title"]);
+              $midichlorians = htmlspecialchars($row["midichlorians"]);
+              $username = htmlspecialchars($row["username"]);
+              $name = htmlspecialchars($row["name"]);
+
         	echo "
-						<a class='list-group-item' href='" . $row["url"] . "'>
-              <h6 class='list-group-item-heading'><b>" . 
-              $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
-							"<p class='list-group-item-text'>User: " . $row["username"] . 
-              "<br>Category: " . $row["name"] .
+						<a class='list-group-item' href='" . $url . "'>
+              <h6 class='list-group-item-heading'><b>" .
+              $title . " </b><span class='badge'>" . $midichlorians . "</span></h6>" .
+							"<p class='list-group-item-text'>User: " . $username .
+              "<br>Category: " . $name .
               "</p></a>
 		        	";
           }
@@ -70,7 +78,7 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
         	mysql_select_db($dbname, $mysql_handle)
         	    or die("Error selecting database: $dbname");
 
-			$query = "SELECT articles.title, articles.url, articles.user_id, articles.category_id, 
+			$query = "SELECT articles.title, articles.url, articles.user_id, articles.category_id,
               articles.midichlorians, users.username, categories.name
               FROM articles, users, categories
               WHERE articles.user_id = users.id AND articles.category_id = categories.id
@@ -80,12 +88,20 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
 							";
         	$articles = mysql_query($query);
             while($row = mysql_fetch_array($articles)) {
+              //Sanatize outputs from html/javascript injection
+              $id = htmlspecialchars($row["id"]);
+              $url = htmlspecialchars($row["url"]);
+              $title = htmlspecialchars($row["title"]);
+              $midichlorians = htmlspecialchars($row["midichlorians"]);
+              $username = htmlspecialchars($row["username"]);
+              $name = htmlspecialchars($row["name"]);
+
         	echo "
-				<a class='list-group-item' href='" . $row["url"] . "'>
-              <h6 class='list-group-item-heading'><b>" . 
-              $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
-              "<p class='list-group-item-text'>User: " . $row["username"] . 
-              "<br>Category: " . $row["name"] .
+				<a class='list-group-item' href='" . $url . "'>
+              <h6 class='list-group-item-heading'><b>" .
+              $title . " </b><span class='badge'>" . $midichlorians . "</span></h6>" .
+              "<p class='list-group-item-text'>User: " . $username .
+              "<br>Category: " . $name .
               "</p></a>
 			         ";
             }
@@ -115,10 +131,15 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
 
             // output data of each row
             while($row = mysql_fetch_array($contributors)) {
+
+                //Sanatize outputs from html/javascript injection
+                $midichlorians = htmlspecialchars($row["midichlorians"]);
+                $username = htmlspecialchars($row["username"]);
+
                 echo "
                   <a class='list-group-item' href='#'>
-                  <h5 class='list-group-item-heading'>".$row["username"]."</h5>
-                  <p><h6>Midichlorians: <span class='badge'>".$row["midichlorians"]."</span></h6></p></a>
+                  <h5 class='list-group-item-heading'>" . $username . "</h5>
+                  <p><h6>Midichlorians: <span class='badge'>".$midichlorians . "</span></h6></p></a>
                   ";
             }
 

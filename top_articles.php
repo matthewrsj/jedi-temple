@@ -46,14 +46,22 @@ function upvote(id){
                 LIMIT 10";
             $articles = mysql_query($query);
               while($row = mysql_fetch_array($articles)) {
+								//Sanatize outputs from html/javascript injection
+								$id = htmlspecialchars($row["id"]);
+								$url = htmlspecialchars($row["url"]);
+								$title = htmlspecialchars($row["title"]);
+								$midichlorians = htmlspecialchars($row["midichlorians"]);
+								$username = htmlspecialchars($row["username"]);
+								$name = htmlspecialchars($row["name"]);
+
             echo "
-           <a class='list-group-item' id='article" . $row["id"] . "' href='" . $row["url"] . "'>
-              <h6 class='list-group-item-heading'><b>" . 
-              $row['title'] . " </b><span class='badge'>" . $row["midichlorians"] . "</span></h6>" .
-              "<p class='list-group-item-text'>User: " . $row["username"] . 
-              "<br>Category: " . $row["name"] .
+           <a class='list-group-item' id='article" . $id . "' href='" . $url . "'>
+              <h6 class='list-group-item-heading'><b>" .
+              $title . " </b><span class='badge'>" . $midichlorians . "</span></h6>" .
+              "<p class='list-group-item-text'>User: " . $username .
+              "<br>Category: " . $name .
               "</p></a>
-              ";              
+              ";
               if (checkAuth(false) != "") {
               echo "
               <div class='form-group'>
