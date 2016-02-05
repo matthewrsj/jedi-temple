@@ -31,9 +31,9 @@ function upvote(id){
 				<select name="category">
 		  			<option value="">Select Category</option>
 		  			<option value="1" <?php if($selected == '1'){echo("selected");}?>>Network Security</option>
-		  			<option value="2" <?php if($selected == '1'){echo("selected");}?>>Physical Security</option>
-		  			<option value="3" <?php if($selected == '1'){echo("selected");}?>>Cryptography</option>
-						<option value="4" <?php if($selected == '1'){echo("selected");}?>>Misc</option>
+		  			<option value="2" <?php if($selected == '2'){echo("selected");}?>>Physical Security</option>
+		  			<option value="3" <?php if($selected == '3'){echo("selected");}?>>Cryptography</option>
+						<option value="4" <?php if($selected == '4'){echo("selected");}?>>Misc</option>
 				</select></br>
 				<input type="submit">
 			</form>
