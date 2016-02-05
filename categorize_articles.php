@@ -24,17 +24,15 @@ function upvote(id){
   <div class="container">
     <div class="row">
       <h3>Articles by Category</h3>
-
+				<form action="categorize_articles.php" method="post">
 				<select name="selectCategory">
-		  			<option value="">Select</option>
+		  			<option value="">Select Category</option>
 		  			<option value="Network Security">Network Security</option>
 		  			<option value="Physical Security">Physical Security</option>
 		  			<option value="Cryptography">Cryptography</option>
 						<option calue="Misc">Misc</option>
 				</select></br>
-				<div class='form-group'>
-					<button class='btn btn-default' type='submitCategory' onclick='' name='submitCategory'>Submit Category</button>
-				</div>
+			</form>
 
     </div>
     <div class="row">
