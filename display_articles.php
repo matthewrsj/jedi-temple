@@ -25,6 +25,7 @@ function upvote(id){
     <div class="row">
       <h3>Current Articles</h3>
     </div>
+    <div class="row">
     <nav>
         <ul class = "pagination">
             <?php
@@ -73,6 +74,7 @@ function upvote(id){
             ?>
         </ul>
     </nav>
+    </div>
     <div class="row">
       <div class="list-group">
           <?php
