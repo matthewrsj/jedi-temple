@@ -138,7 +138,7 @@ document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document
                 $username = htmlspecialchars($row["username"]);
 
                 echo "
-                  <a class='list-group-item' href='#'>
+                  <a class='list-group-item'>
                   <h5 class='list-group-item-heading'>" . $username . "</h5>
                   <p><h6>Midichlorians: <span class='badge'>".$midichlorians . "</span></h6></p></a>
                   ";
