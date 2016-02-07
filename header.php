@@ -74,7 +74,7 @@ function checkAuth($doRedirect) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   </head>
 
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -94,7 +94,7 @@ function checkAuth($doRedirect) {
         <!-- <li><a href="#">Link</a></li> -->
         <li class="Articles">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Articles<span class="caret"></span></a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu dropdown-inverse">
             <li><a href="top_articles.php">Top Articles</a></li>
             <li><a href="display_articles.php">All Articles</a></li>
             <li><a href="categorize_articles.php">By Category</a></li>
@@ -133,12 +133,12 @@ function checkAuth($doRedirect) {
     	mysql_select_db($dbname, $mysql_handle)
         	or die("Error selecting database: $dbname");
       $onidid = $_SESSION['onidid'];
-      $midicount = mysql_query("SELECT * FROM users WHERE users.username = '$onidid'");
+      $midicount = mysql_query("SELECT midichlorians, username FROM users WHERE users.username = '$onidid'");
       if (!$midicount) {
           die('Query failed to execute for some reason');
       }
       while ($row = mysql_fetch_array($midicount)){
-        echo "<li>" . $row['username'] . " &nbsp</li><li><span class='badge'>" . $row["midichlorians"] . "</span></li>";
+        echo "<li style='color:white; font-weight:bold'>" . $row['username'] . " &nbsp</li><li><span class='badge'>" . $row["midichlorians"] . "</span></li>";
       }
       echo "</ul>";
       mysql_close($mysql_handle);
