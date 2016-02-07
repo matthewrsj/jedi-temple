@@ -122,7 +122,6 @@ function checkAuth($doRedirect) {
       } else {
       echo "
       <ul class='nav navbar-nav navbar-right'>";
-      /*<li><a href='#'>Already Logged In</a></li>";*/
       $dbhost = 'oniddb.cws.oregonstate.edu';
       $dbname = 'malickc-db';
       $dbuser = 'malickc-db';
@@ -138,7 +137,9 @@ function checkAuth($doRedirect) {
           die('Query failed to execute for some reason');
       }
       while ($row = mysql_fetch_array($midicount)){
-        echo "<li style='color:white; font-weight:bold'>" . $row['username'] . " &nbsp</li><li><span class='badge'>" . $row["midichlorians"] . "</span></li>";
+        echo "<li><a>" . $row['username'] . "</a></li>
+          <li><a><span class='badge'>" . $row["midichlorians"] . "</span></a></li>
+          <li><a href='profile.php'>User Profile</a></li>";
       }
       echo "</ul>";
       mysql_close($mysql_handle);
