@@ -1,5 +1,6 @@
 <?php include('header.php') ?>
 <div class="container">
+      <h5>Welcome to Jedi Temple, the security news aggregate training Keyboard Jedis in the way of the Force. Learn how to protect against the dark side!</h5>
   <div class="row">
     <div class="col-md-6">
       <h2>Home</h2>
