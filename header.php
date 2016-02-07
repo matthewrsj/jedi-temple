@@ -118,7 +118,7 @@ function checkAuth($doRedirect) {
       <?php if (checkAuth(false) == "") {
       echo "<ul class='nav navbar-nav navbar-right'>
         <li><a href='login_handler.php'>Login</a></li>
-      </ul>";
+        </ul>";
       } else {
       echo "
       <ul class='nav navbar-nav navbar-right'>";
