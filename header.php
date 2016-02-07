@@ -84,7 +84,7 @@ function checkAuth($doRedirect) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Jedi Temple</a>
+      <a class="navbar-brand" href="index.php">Jedi Temple</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -115,15 +115,34 @@ function checkAuth($doRedirect) {
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
-      <?php if (checkAuth(false) == "") { ?>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="login_handler.php">Login</a></li>
-      </ul>
-      <?php } else { ?>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Already Logged In</a></li>
-      </ul>
-      <?php } ?>
+      <?php if (checkAuth(false) == "") {
+      echo "<ul class='nav navbar-nav navbar-right'>
+        <li><a href='login_handler.php'>Login</a></li>
+      </ul>";
+      } else {
+      echo "
+      <ul class='nav navbar-nav navbar-right'>";
+      /*<li><a href='#'>Already Logged In</a></li>";*/
+      $dbhost = 'oniddb.cws.oregonstate.edu';
+      $dbname = 'malickc-db';
+      $dbuser = 'malickc-db';
+      $dbpass = 'Jz8QJFUt65lTYY16';
+      $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
+        	or die("Error connecting to database server");
+
+    	mysql_select_db($dbname, $mysql_handle)
+        	or die("Error selecting database: $dbname");
+      $onidid = $_SESSION['onidid'];
+      $midicount = mysql_query("SELECT * FROM users WHERE users.username = '$onidid'");
+      if (!$midicount) {
+          die('Query failed to execute for some reason');
+      }
+      while ($row = mysql_fetch_array($midicount)){
+        echo "<li>" . $row['username'] . " &nbsp</li><li><span class='badge'>" . $row["midichlorians"] . "</span></li>";
+      }
+      echo "</ul>";
+      mysql_close($mysql_handle);
+  } ?>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
