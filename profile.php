@@ -1,7 +1,7 @@
 <?php include('header.php') ?>
   <div class="container">
     <div class="row">
-    <h3><?php echo $onidid; ?></h3>
+    <h2><?php echo $onidid; ?></h2>
 <?php
 $dbhost = 'oniddb.cws.oregonstate.edu';
 $dbname = 'malickc-db';
