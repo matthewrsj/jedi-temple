@@ -1,7 +1,7 @@
 <?php include('header.php') ?>
  <div class="container">
         <div class="row">
-          <h1>Learn about how others have handled the darkside!</h1>
+          <h1>Learn about how others have handled the dark side!</h1>
         </div>
         <div class="row">
           <div class="jumbotron">
