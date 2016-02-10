@@ -1,3 +1,4 @@
+<?php include('connectdb.php') ?>
 <?php
 session_start();
 
@@ -23,15 +24,6 @@ function checkAuth($doRedirect) {
     if ($matches && count($matches) > 1) {
       $onidid = $matches[1];
       $_SESSION["onidid"] = $onidid;
-      $dbhost = 'oniddb.cws.oregonstate.edu';
-      $dbname = 'malickc-db';
-      $dbuser = 'malickc-db';
-      $dbpass = 'Jz8QJFUt65lTYY16';
-      $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
-        	or die("Error connecting to database server");
-
-    	mysql_select_db($dbname, $mysql_handle)
-        	or die("Error selecting database: $dbname");
 
       $checkUserID = mysql_query("SELECT * FROM users WHERE users.username = '$onidid'");
 
@@ -111,15 +103,6 @@ function checkAuth($doRedirect) {
       } else {
       echo "
       <ul class='nav navbar-nav navbar-right'>";
-      $dbhost = 'oniddb.cws.oregonstate.edu';
-      $dbname = 'malickc-db';
-      $dbuser = 'malickc-db';
-      $dbpass = 'Jz8QJFUt65lTYY16';
-      $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
-        	or die("Error connecting to database server");
-
-    	mysql_select_db($dbname, $mysql_handle)
-        	or die("Error selecting database: $dbname");
       $onidid = $_SESSION['onidid'];
       $midicount = mysql_query("SELECT midichlorians, username FROM users WHERE users.username = '$onidid'");
       if (!$midicount) {

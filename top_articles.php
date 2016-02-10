@@ -1,4 +1,5 @@
 <?php include('header.php') ?>
+<?php include('connectdb.php') ?>
 <script>
 function downvote(id){
 	var xmlhttp = new XMLHttpRequest();
@@ -29,15 +30,6 @@ function upvote(id){
       <div class="list-group">
         <div>
           <?php
-            $dbhost = 'oniddb.cws.oregonstate.edu';
-            $dbname = 'malickc-db';
-            $dbuser = 'malickc-db';
-            $dbpass = 'Jz8QJFUt65lTYY16';
-            $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
-                or die("Error connecting to database server");
-
-            mysql_select_db($dbname, $mysql_handle)
-                or die("Error selecting database: $dbname");
             $query = "SELECT articles.title, articles.url, articles.user_id, articles.id, articles.category_id,
                 articles.midichlorians, users.username, categories.name, articles.time_submitted
                 FROM articles, users, categories

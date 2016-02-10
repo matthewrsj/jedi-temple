@@ -1,4 +1,5 @@
 <?php include('header.php') ?>
+<?php include('connectdb.php') ?>
     <div class="container">
       <div class="row">
         <h3>Add Article</h3>
@@ -18,17 +19,6 @@
               <label for="category_id">Category</label>
               <select class="form-control" name="category_id">
                 <?php
-                    $dbhost = 'oniddb.cws.oregonstate.edu';
-                    $dbname = 'malickc-db';
-                    $dbuser = 'malickc-db';
-                    $dbpass = 'Jz8QJFUt65lTYY16';
-
-                    $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
-                        or die("Error connecting to database server");
-
-                    mysql_select_db($dbname, $mysql_handle)
-                        or die("Error selecting database: $dbname");
-
                     $query = "SELECT categories.id, categories.name
                         FROM categories";
 
