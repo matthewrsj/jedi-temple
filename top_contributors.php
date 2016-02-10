@@ -1,4 +1,5 @@
 <?php include('header.php') ?>
+<?php include('connectdb.php') ?>
 <div class="container">
 <div class="row">
   <h3>Top Contributors</h3>
@@ -6,20 +7,6 @@
 <div class="row">
   <div class="">
 <?php
-
-    $dbhost = 'oniddb.cws.oregonstate.edu';
-    $dbname = 'malickc-db';
-    $dbuser = 'malickc-db';
-    $dbpass = 'Jz8QJFUt65lTYY16';
-
-
-    // Create connection
-    $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
-        or die("Error connecting to database server");
-
-    mysql_select_db($dbname, $mysql_handle)
-        or die("Error selecting database: $dbname");
-
     $query = "SELECT * FROM users ORDER BY midichlorians DESC LIMIT 5";
     $contributors = mysql_query($query);
 

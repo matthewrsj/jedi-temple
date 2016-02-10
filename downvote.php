@@ -1,14 +1,5 @@
+<?php include('connectdb.php') ?>
 <?php
-		$dbhost = 'oniddb.cws.oregonstate.edu';
-		$dbname = 'malickc-db';
-		$dbuser = 'malickc-db';
-		$dbpass = 'Jz8QJFUt65lTYY16';
-		$mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
-			or die("Error connecting to database server");
-
-		mysql_select_db($dbname, $mysql_handle)
-			or die("Error selecting database: $dbname");
-
 		$query = "UPDATE articles
 			JOIN users ON articles.user_id = users.id
 			SET articles.midichlorians = articles.midichlorians -1,

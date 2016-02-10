@@ -1,3 +1,4 @@
+<?php include('connectdb.php') ?>
 <?php
   // start session
   session_start();
@@ -6,10 +7,6 @@
   $session_id = $_SESSION['onidid'];
 
 	// database connection information
-	$dbhost = 'oniddb.cws.oregonstate.edu';
-	$dbname = 'malickc-db';
-	$dbuser = 'malickc-db';
-	$dbpass = 'Jz8QJFUt65lTYY16';
 
 	$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 

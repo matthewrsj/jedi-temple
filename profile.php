@@ -21,19 +21,11 @@ function upvote(id){
 }
 </script>
 <?php include('header.php') ?>
+<?php include('connectdb.php') ?>
   <div class="container">
     <div class="row">
     <h2><?php echo $onidid; ?></h2>
 <?php
-$dbhost = 'oniddb.cws.oregonstate.edu';
-$dbname = 'malickc-db';
-$dbuser = 'malickc-db';
-$dbpass = 'Jz8QJFUt65lTYY16';
-$mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
-  or die("Error connecting to database server");
-
-mysql_select_db($dbname, $mysql_handle)
-  or die("Error selecting database: $dbname");
 $query = "SELECT midichlorians FROM users WHERE users.username = '$onidid'";
 $result = mysql_query($query);
 while ($row = mysql_fetch_array($result)){
@@ -46,10 +38,6 @@ while ($row = mysql_fetch_array($result)){
     <nav>
         <ul class = "pagination">
 <?php
-$dbhost = 'oniddb.cws.oregonstate.edu';
-$dbname = 'malickc-db';
-$dbuser = 'malickc-db';
-$dbpass = 'Jz8QJFUt65lTYY16';
 $num_rec_per_page = 5;
 $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
   or die("Error connecting to database server");
@@ -93,10 +81,6 @@ mysql_close($mysql_handle);
     <div class="row">
       <div class="list-group">
           <?php
-            $dbhost = 'oniddb.cws.oregonstate.edu';
-            $dbname = 'malickc-db';
-            $dbuser = 'malickc-db';
-            $dbpass = 'Jz8QJFUt65lTYY16';
 			$num_rec_per_page = 5;
             $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
                 or die("Error connecting to database server");
@@ -151,10 +135,6 @@ mysql_close($mysql_handle);
     <nav>
         <ul class = "pagination">
 <?php
-$dbhost = 'oniddb.cws.oregonstate.edu';
-$dbname = 'malickc-db';
-$dbuser = 'malickc-db';
-$dbpass = 'Jz8QJFUt65lTYY16';
 $num_rec_per_page = 5;
 $mysql_handle = mysql_connect($dbhost, $dbuser, $dbpass)
   or die("Error connecting to database server");
